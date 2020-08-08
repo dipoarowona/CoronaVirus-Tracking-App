@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react";
+
+import TotalCasesCard from "./Components/TotalCases";
+import MainChartCard from "./Components/MainChart";
+import UnderChartCard from "./Components/underchart";
+
 import "./CSS/App.css";
+import "./CSS/Cards.css";
 import "./CSS/Loading.css";
+
 function App() {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    active: 0,
+    confirmed: 0,
+    critical: 0,
+    deaths: 0,
+    recovered: 0,
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +36,16 @@ function App() {
     })
       .then((response) => response.json())
       .then((response_data) => {
-        setData(response_data[0].confirmed);
+        setData({
+          active:
+            response_data[0].confirmed -
+            response_data[0].deaths -
+            response_data[0].recovered,
+          confirmed: response_data[0].confirmed,
+          critical: response_data[0].critical,
+          deaths: response_data[0].deaths,
+          recovered: response_data[0].recovered,
+        });
       });
   };
 
@@ -33,27 +55,44 @@ function App() {
         <div className="spinner"></div>
       ) : (
         <div className="whole-page">
+          <div className="title" style={{ textAlign: "center" }}>
+            <h1>COVID-19</h1>
+          </div>
           <div className="row country-band">
             <h1>Main Band at the top</h1>
           </div>
 
           <div className="row">
             <div className="col-sm-3">
-              <h1>left bar - will have 2 rows</h1>
+              <div className="row">
+                <TotalCasesCard cases={data.confirmed} />
+              </div>
+              <div className="row">
+                <TotalCasesCard cases={data.deaths} />
+              </div>
+              <div className="row">
+                <TotalCasesCard cases={data.recovered} />
+              </div>
+              <div className="row">
+                <TotalCasesCard cases={data.active} />
+              </div>
+              <div className="row">
+                <TotalCasesCard cases={data.critical} />
+              </div>
             </div>
             <div className="col-sm-9">
               <div className="row">
-                <h1>main daily chart</h1>
+                <MainChartCard />
               </div>
               <div className="row">
                 <div className="col">
-                  <h1>item 1 under chart</h1>
+                  <UnderChartCard />
                 </div>
                 <div className="col">
-                  <h1>item 2 under chart</h1>
+                  <UnderChartCard />
                 </div>
                 <div className="col">
-                  <h1>item 3 under chart</h1>
+                  <UnderChartCard />
                 </div>
               </div>
             </div>
