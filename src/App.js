@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import TotalCasesCard from "./Components/TotalCases";
 import MainChartCard from "./Components/MainChart";
 import UnderChartCard from "./Components/underchart";
+import FurtherInfoCard from "./Components/furtherinfo";
+import CountryCard from "./Components/countryCard";
 
 import "./CSS/App.css";
 import "./CSS/Cards.css";
@@ -23,7 +25,7 @@ function App() {
     loadData();
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1000);
   }, []);
 
   const loadData = () => {
@@ -56,28 +58,44 @@ function App() {
       ) : (
         <div className="whole-page">
           <div className="title" style={{ textAlign: "center" }}>
-            <h1>COVID-19</h1>
+            <h1 id="page-title">COVID-19</h1>
           </div>
-          <div className="row country-band">
-            <h1>Main Band at the top</h1>
+          <div className="row">
+            <CountryCard />
           </div>
 
           <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-3 total-cases">
               <div className="row">
-                <TotalCasesCard cases={data.confirmed} />
+                <TotalCasesCard
+                  color="orange"
+                  name="Total Cases"
+                  cases={data.confirmed}
+                />
               </div>
               <div className="row">
-                <TotalCasesCard cases={data.deaths} />
+                <TotalCasesCard color="red" name="Deaths" cases={data.deaths} />
               </div>
               <div className="row">
-                <TotalCasesCard cases={data.recovered} />
+                <TotalCasesCard
+                  color="green"
+                  name="Recovered"
+                  cases={data.recovered}
+                />
               </div>
               <div className="row">
-                <TotalCasesCard cases={data.active} />
+                <TotalCasesCard
+                  color="yellow"
+                  name="Active"
+                  cases={data.active}
+                />
               </div>
               <div className="row">
-                <TotalCasesCard cases={data.critical} />
+                <TotalCasesCard
+                  color="purple"
+                  name="Critical"
+                  cases={data.critical}
+                />
               </div>
             </div>
             <div className="col-sm-9">
@@ -85,14 +103,14 @@ function App() {
                 <MainChartCard />
               </div>
               <div className="row">
-                <div className="col">
+                <div className="col-sm-3">
+                  <UnderChartCard />
+                </div>
+                <div className="col-sm-3">
                   <UnderChartCard />
                 </div>
                 <div className="col">
-                  <UnderChartCard />
-                </div>
-                <div className="col">
-                  <UnderChartCard />
+                  <FurtherInfoCard />
                 </div>
               </div>
             </div>
