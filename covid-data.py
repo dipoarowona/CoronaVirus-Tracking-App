@@ -8,6 +8,7 @@ import requests
 import pymongo
 from datetime import datetime as dt 
 import pytz
+from config import Database_URI
 
 #grabing total covid info
 def get_totals():
@@ -37,7 +38,7 @@ def get_timeStamp():
 #check to see if date in last database entry is today 
 #else make a new entry 
 
-client = pymongo.MongoClient("mongodb://DipoArowona:AopvGmg3zBRtX4uL@igtracker-shard-00-00-zrxvq.mongodb.net:27017,igtracker-shard-00-01-zrxvq.mongodb.net:27017,igtracker-shard-00-02-zrxvq.mongodb.net:27017/Random?ssl=true&replicaSet=IGTracker-shard-0&authSource=admin&retryWrites=true&w=majority")
+client = pymongo.MongoClient(Database_URI)
 db = client["Covid"]
 total_col = db["total_data"]
 
