@@ -1,2 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Corona Virus Dashboard web built entirely in node.js, express.js to serve the react.js clientside
+
 
