@@ -1,14 +1,14 @@
-const { response } = require("express");
+const path = require("path");
 const express = require("express");
 
 const globalCases = require("./utils/cases");
 const countryCases = require("./utils/countrycases");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.get("", (req, res) => {
-  res.send("<h1>Main Weather App</h1>");
+  res.send("<h1>Covid App</h1>");
 });
 
 /*API ENDPOINTS*/
@@ -19,7 +19,7 @@ app.get("/global-data", (req, res) => {
     if (error) {
       return res.send({ error });
     }
-    res.send(data);
+    res.send([data]);
   });
 });
 app.get("/global-data/*", (req, res) => {
