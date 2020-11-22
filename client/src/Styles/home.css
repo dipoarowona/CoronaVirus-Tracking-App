@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap");
+.HomePage {
+  max-width: 85%;
+  text-align: center;
+}
+.HomePage h1 {
+  font-size: 60px;
+  font-family: "poppins", sans-serif;
+  font-weight: bold;
+  line-height: 80px;
+}
+#virus {
+  max-height: 800px !important;
+}
+
+.Data {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Flags {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Flags h2 {
+  margin-top: 20px;
+}
+
+.Flags h2:nth-child(1) {
+  margin-top: 0px;
+}

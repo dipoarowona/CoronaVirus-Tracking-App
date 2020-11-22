@@ -15,12 +15,18 @@ app.get("", (req, res) => {
 
 //current global data -> done
 app.get("/global-data", (req, res) => {
-  globalCases((error, data) => {
-    if (error) {
-      return res.send({ error });
-    }
-    res.send([data]);
-  });
+  // globalCases((error, data) => {
+  //   if (error) {
+  //     return res.send({ error });
+  //   }
+  res.send([
+    {
+      confirmed: 58502857,
+      deaths: 1387042,
+      recovered: 40198671,
+    },
+  ]);
+  // });
 });
 app.get("/global-data/*", (req, res) => {
   res.send({ error: "API ENDPOINT DOES NOT EXIST" });

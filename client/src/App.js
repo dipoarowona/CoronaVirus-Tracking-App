@@ -1,13 +1,25 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import { Route, Switch } from "react-router-dom";
+
+import Nav from "./components/navbar";
+import Home from "./components/Home";
+import Country from "./components/country";
+import ErrorPage from "./components/404";
+
+import "./Styles/App.css";
 
 const App = () => {
-  useEffect(() => {
-    fetch("/global-data")
-      .then((res) => res.json())
-      .then((xyx) => console.log(xyx));
-  }, []);
-  return <div></div>;
+  return (
+    <div>
+      <div>
+        <Nav />
+      </div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/country" component={Country} />
+        <Route component={ErrorPage} />
+      </Switch>
+    </div>
+  );
 };
 
 export default App;
