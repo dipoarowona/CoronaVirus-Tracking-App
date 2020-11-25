@@ -11,6 +11,7 @@
 }
 #virus {
   max-height: 800px !important;
+  z-index: 1;
 }
 
 .Data {

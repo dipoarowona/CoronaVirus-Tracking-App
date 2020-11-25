@@ -21,8 +21,9 @@ const nav = () => {
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/Country">Countries</Nav.Link>
-            <Nav.Link href="/Stats">Statistics</Nav.Link>
-            <Nav.Link href="/Stats">EN</Nav.Link>
+            <Nav.Link href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-covid-19#:~:text=symptoms">
+              Learn More
+            </Nav.Link>
             <Form inline>
               <FormControl
                 style={{
