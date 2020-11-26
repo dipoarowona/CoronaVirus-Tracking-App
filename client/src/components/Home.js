@@ -17,9 +17,9 @@ import UK from "../img/Flags/united-kingdom.svg";
 import "../Styles/home.css";
 
 const Home = () => {
-  const [cases, setCases] = useState(0);
-  const [deaths, setDeaths] = useState(0);
-  const [recovered, setRecovered] = useState(0);
+  const [cases, setCases] = useState(60000000);
+  const [deaths, setDeaths] = useState(14000000);
+  const [recovered, setRecovered] = useState(41000000);
 
   useEffect(() => {
     fetch("/global-data")

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
@@ -20,7 +20,10 @@ const nav = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/Country">Countries</Nav.Link>
+            <Link to={{ pathname: "/country", props: { name: "Canada" } }}>
+              <Nav.Link href="/Country">Countries</Nav.Link>
+            </Link>
+
             <Nav.Link href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-covid-19#:~:text=symptoms">
               Learn More
             </Nav.Link>

@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const { MongoClient } = require("mongodb");
 
 const globalCases = require("./utils/cases");
 const countryCases = require("./utils/countrycases");
@@ -15,18 +16,13 @@ app.get("", (req, res) => {
 
 //current global data -> done
 app.get("/global-data", (req, res) => {
-  // globalCases((error, data) => {
-  //   if (error) {
-  //     return res.send({ error });
-  //   }
-  res.send([
-    {
-      confirmed: 58502857,
-      deaths: 1387042,
-      recovered: 40198671,
-    },
-  ]);
-  // });
+  globalCases((error, data) => {
+    if (error) {
+      return res.send({ error });
+    }
+    console.log("got global");
+    res.send([data]);
+  });
 });
 app.get("/global-data/*", (req, res) => {
   res.send({ error: "API ENDPOINT DOES NOT EXIST" });
@@ -53,6 +49,7 @@ app.get("/global-graph-data", (req, res) => {
   if (!req.query.category || !req.query.history) {
     return res.send({ error: "please provide all query parameters" });
   }
+
   res.send({
     message:
       "getting historical data for global " +
@@ -74,16 +71,32 @@ app.get("/country-graph-data", (req, res) => {
     return res.send({ error: "please provide all query parameters" });
   }
 
-  res.send({
-    message:
-      "getting historical data for " +
-      req.query.country +
-      " " +
-      req.query.category +
-      " in the past " +
-      req.query.history +
-      " days",
+  //connect to database
+
+  const uri =
+    "mongodb+srv://DipoArowona:AopvGmg3zBRtX4uL@igtracker.zrxvq.mongodb.net/Covid?retryWrites=true&w=majority";
+
+  MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+    if (err) {
+      return res.send([{ error: "unable to load data" }]);
+    }
+
+    const db = client.db("Covid");
+    db.collection(req.query.country)
+      .find({ Category: req.query.category })
+      .toArray((error, result) => {
+        if (error) {
+          return res.send([{ error: "unable to query data" }]);
+        }
+        console.log("country graph data for", req.query.country);
+        res.send(result[0].data);
+      });
   });
+
+  //query data based on info
+
+  //send data back
+
   /*
     querys -> category(confirmed,active,death),country,history (30d,90d,120d inception)
         return data of cases or 
