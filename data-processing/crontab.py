@@ -2,10 +2,12 @@
 import requests
 from pymongo import MongoClient
 from datetime import datetime as dt, timedelta
+import config
+
 #make api call for day
 url = "https://covid-193.p.rapidapi.com/history"
 headers = {
-    'x-rapidapi-key': "491f353b91msh4d6e560099cab14p16dc45jsn2ebbe77bc738",
+    'x-rapidapi-key': config.API_KEY,
     'x-rapidapi-host': "covid-193.p.rapidapi.com"
     }
 
@@ -36,9 +38,8 @@ for country in countries:
 
     #PUT INTO CORRECT LOCATION IN DATABASE
     #connect to database 
-    pw = "AopvGmg3zBRtX4uL"
-    client = MongoClient("mongodb+srv://DipoArowona:"+pw+"@igtracker-zrxvq.mongodb.net/Covid?retryWrites=true&w=majority")
-    db = client["Covid"]
+    client = MongoClient(config.MONGO_URI)
+    db = client[config.MONGO_DB]
 
     country_col = db[country]
 

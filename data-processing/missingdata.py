@@ -1,10 +1,11 @@
 #fill in days of missing data starting from november 16 
 import requests
 from pymongo import MongoClient
+import config
 #make api call for day
 url = "https://covid-193.p.rapidapi.com/history"
 headers = {
-    'x-rapidapi-key': "491f353b91msh4d6e560099cab14p16dc45jsn2ebbe77bc738",
+    'x-rapidapi-key': config.API_KEY,
     'x-rapidapi-host': "covid-193.p.rapidapi.com"
     }
 
@@ -30,9 +31,9 @@ for i in range(15,26):
     
 
     #connect to database 
-    pw = "AopvGmg3zBRtX4uL"
-    client = MongoClient("mongodb+srv://DipoArowona:"+pw+"@igtracker-zrxvq.mongodb.net/Covid?retryWrites=true&w=majority")
-    db = client["Covid"]
+    
+    client = MongoClient(config.MONGO_URI)
+    db = client[config.MONGO_DB]
 
     US_col = db["UK"]
 

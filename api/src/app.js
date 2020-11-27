@@ -2,6 +2,8 @@ const path = require("path");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 
+require("dotenv").config({ path: __dirname + "/./../.env" });
+
 const globalCases = require("./utils/cases");
 const countryCases = require("./utils/countrycases");
 
@@ -73,15 +75,14 @@ app.get("/country-graph-data", (req, res) => {
 
   //connect to database
 
-  const uri =
-    "mongodb+srv://DipoArowona:AopvGmg3zBRtX4uL@igtracker.zrxvq.mongodb.net/Covid?retryWrites=true&w=majority";
+  const uri = process.env.MONGO_URI;
 
   MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
     if (err) {
       return res.send([{ error: "unable to load data" }]);
     }
 
-    const db = client.db("Covid");
+    const db = client.db(process.env.MONGO_DB);
     db.collection(req.query.country)
       .find({ Category: req.query.category })
       .toArray((error, result) => {

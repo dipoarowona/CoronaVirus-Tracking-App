@@ -3,6 +3,7 @@
 
 from pymongo import MongoClient
 import pandas as pd
+import config
 
 
 #load in data for each country
@@ -38,9 +39,8 @@ UK_newdeaths = UK_df[["new_deaths"]].to_dict()["new_deaths"]
 
 
 #connect to database 
-pw = "AopvGmg3zBRtX4uL"
-client = MongoClient("mongodb+srv://DipoArowona:"+pw+"@igtracker-zrxvq.mongodb.net/Covid?retryWrites=true&w=majority")
-db = client["Covid"]
+client = MongoClient(config.MONGO_URI)
+db = client[config.MONGO_DB]
 canada_col = db["Canada"]
 UK_col = db["UK"]
 US_col = db["USA"]
