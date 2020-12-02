@@ -18,6 +18,16 @@ const Chart = (props) => {
           duration: 3000,
           easing: "easeInQuad",
         },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
+                zeroLineColor: "red",
+              },
+            },
+          ],
+        },
       }}
     />
   );

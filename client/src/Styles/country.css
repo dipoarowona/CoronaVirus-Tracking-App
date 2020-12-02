@@ -1,0 +1,54 @@
+.country-page {
+  width: 80%;
+  margin: 1% auto;
+}
+.country-name {
+  background: linear-gradient(265.3deg, #062191 33.08%, #1b2653 97.97%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  width: 95%;
+  height: 80px;
+  text-align: center;
+}
+
+.country-name h1 {
+  margin-top: auto;
+}
+
+.main-chart {
+  background: linear-gradient(265.3deg, #062191 33.08%, #1b2653 97.97%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  width: 850px;
+  height: 400px;
+}
+
+.main-data-card {
+  margin-top: 5%;
+  background: linear-gradient(265.3deg, #062191 33.08%, #1b2653 97.97%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  width: 95%;
+  height: 300px;
+  text-align: center;
+}
+
+.under-chart-data {
+  margin-top: 5%;
+  background: linear-gradient(265.3deg, #062191 33.08%, #1b2653 97.97%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  width: 47%;
+  height: 300px;
+}
+.under-chart-data:nth-child(1) {
+  margin-right: 5% !important;
+}
+
+.main-data {
+  margin: 0 auto;
+}
+
+#bottom-main-data-row {
+  margin-top: 8%;
+}
