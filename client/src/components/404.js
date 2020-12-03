@@ -2,8 +2,10 @@ import React from "react";
 
 const ErrorPage = () => {
   return (
-    <div>
-      <h1>error buddy page dont exist</h1>
+    <div style={{ width: "100%", textAlign: "center" }}>
+      <h1>Hate to Break To Ya.</h1>
+      <h1>404.</h1>
+      <h1>:)</h1>
     </div>
   );
 };

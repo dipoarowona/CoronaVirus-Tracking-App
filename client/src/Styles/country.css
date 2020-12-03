@@ -33,6 +33,14 @@
   text-align: center;
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #1b2653;
+  border-radius: 10px;
+}
+
 .under-chart-data {
   margin-top: 5%;
   background: linear-gradient(265.3deg, #062191 33.08%, #1b2653 97.97%);

@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "../Styles/nav.css";
 
@@ -20,24 +19,29 @@ const nav = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Link to={{ pathname: "/country", props: { name: "Canada" } }}>
-              <Nav.Link href="/Country">Countries</Nav.Link>
-            </Link>
+            <NavDropdown title="Countries" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">
+                <Link to={{ pathname: "/country-", props: { name: "Canada" } }}>
+                  Canada
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                {" "}
+                <Link to={{ pathname: "/country-", props: { name: "USA" } }}>
+                  USA
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">
+                {" "}
+                <Link to={{ pathname: "/country-", props: { name: "UK" } }}>
+                  UK
+                </Link>
+              </NavDropdown.Item>
+            </NavDropdown>
 
             <Nav.Link href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-covid-19#:~:text=symptoms">
               Learn More
             </Nav.Link>
-            <Form inline>
-              <FormControl
-                style={{
-                  backgroundColor: "#1b2653",
-                  border: "1px solid white",
-                }}
-                type="text"
-                placeholder="Search"
-                className="mr-sm-2"
-              />
-            </Form>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

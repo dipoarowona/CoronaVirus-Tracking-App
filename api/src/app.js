@@ -89,7 +89,13 @@ app.get("/country-graph-data", (req, res) => {
         if (error) {
           return res.send([{ error: "unable to query data" }]);
         }
-        console.log("country graph data for", req.query.country);
+        console.log(
+          "country graph data for",
+          req.query.country,
+          "CATEGORY:",
+          req.query.category
+        );
+        client.close();
         res.send(result[0].data);
       });
   });

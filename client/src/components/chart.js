@@ -6,7 +6,7 @@ const Chart = (props) => {
         labels: props.x.slice(-30),
         datasets: [
           {
-            label: "Cases",
+            label: props.cat,
             data: props.y.slice(-30),
             backgroundColor: "rgba(255, 99, 132, 0.6)",
           },
