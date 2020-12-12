@@ -15,7 +15,7 @@ const Chart = (props) => {
       options={{
         responsive: true,
         animation: {
-          duration: 3000,
+          duration: 1000,
           easing: "easeInQuad",
         },
         scales: {

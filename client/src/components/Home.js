@@ -10,7 +10,6 @@ import CountUp from "react-countup";
 
 import VirusImg from "../img/virusIMG.png";
 import CA from "../img/Flags/canada.svg";
-import CH from "../img/Flags/china.svg";
 import USA from "../img/Flags/united-states.svg";
 import UK from "../img/Flags/united-kingdom.svg";
 
@@ -58,26 +57,19 @@ const Home = () => {
         <Col md="auto">
           <div className="Flags">
             <h2>CA</h2>
-            <Link to={{ pathname: "/country", props: { name: "Canada" } }}>
+            <Link
+              to={{ pathname: "/country/Canada", props: { name: "Canada" } }}
+            >
               <img src={CA} alt="Canada" />
             </Link>
 
             <h2>USA</h2>
-            <Link to={{ pathname: "/country", props: { name: "USA" } }}>
+            <Link to={{ pathname: "/country/USA", props: { name: "USA" } }}>
               <img src={USA} alt="USA" />
             </Link>
             <h2>UK</h2>
-            <Link to={{ pathname: "/country", props: { name: "UK" } }}>
+            <Link to={{ pathname: "/country/UK", props: { name: "UK" } }}>
               <img src={UK} alt="UK" />
-            </Link>
-            <h2>CH</h2>
-            <Link to={{ pathname: "/country", props: { name: "China" } }}>
-              <img src={CH} alt="China" />
-            </Link>
-
-            <h2>NIG</h2>
-            <Link to={{ pathname: "/country", props: { name: "Nigeria" } }}>
-              <img src={CA} alt="Nigeria" />
             </Link>
           </div>
         </Col>

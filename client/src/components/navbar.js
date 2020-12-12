@@ -20,23 +20,29 @@ const nav = () => {
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Countries" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">
-                <Link to={{ pathname: "/country-", props: { name: "Canada" } }}>
-                  Canada
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                {" "}
-                <Link to={{ pathname: "/country-", props: { name: "USA" } }}>
-                  USA
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                {" "}
-                <Link to={{ pathname: "/country-", props: { name: "UK" } }}>
-                  UK
-                </Link>
-              </NavDropdown.Item>
+              <Link
+                id="dd-item"
+                to={{
+                  pathname: "/country/Canada",
+                  props: { name: "Canada" },
+                }}
+              >
+                <NavDropdown.Item href="#action/3.1">Canada</NavDropdown.Item>
+              </Link>
+
+              <Link
+                id="dd-item"
+                to={{ pathname: "/country/USA", props: { name: "USA" } }}
+              >
+                <NavDropdown.Item href="#action/3.2">USA</NavDropdown.Item>
+              </Link>
+
+              <Link
+                id="dd-item"
+                to={{ pathname: "/country/UK", props: { name: "UK" } }}
+              >
+                <NavDropdown.Item href="#action/3.3">UK</NavDropdown.Item>
+              </Link>
             </NavDropdown>
 
             <Nav.Link href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-covid-19#:~:text=symptoms">

@@ -19,3 +19,8 @@ Nav {
   font-weight: bold;
   font-size: 20px;
 }
+
+#dd-item {
+  color: black;
+  text-decoration: none;
+}
